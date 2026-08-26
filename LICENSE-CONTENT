@@ -1,0 +1,29 @@
+Course content licence
+======================
+
+Applies to: the contents of course/ — the question bank, coverage ledger,
+curriculum and any chapters generated into course/chapters/.
+
+Licensed under the Creative Commons Attribution 4.0 International License
+(CC BY 4.0). Full text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+You are free to share and adapt this material for any purpose, including
+commercially, provided you give appropriate credit, link to the licence, and
+indicate if changes were made.
+
+Attribution
+-----------
+Please credit both:
+
+  1. This repository — "AI PM Course" — as the compilation, and
+  2. The nine original question sources listed in README.md and in
+     course/bank.md, which are the reason the bank exists.
+
+What is NOT included
+--------------------
+The original sources' own answer guidance, explanatory material and named
+frameworks are deliberately not reproduced in this repository. They remain the
+property of their authors. Go to the originals for those.
+
+If you are one of those authors and would like your questions credited
+differently, or removed, please open an issue.

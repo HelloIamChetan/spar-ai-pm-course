@@ -1,0 +1,6 @@
+# Your own config may hold personal details — uncomment if you fork this publicly.
+# course/ai-pm-course.config.md
+
+__pycache__/
+*.pyc
+.DS_Store
