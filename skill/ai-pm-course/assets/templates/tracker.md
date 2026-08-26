@@ -18,6 +18,16 @@
 - Never guess a rot-prone fact; date-stamp what was verified.
 - Never re-ask a ✅ question.
 
+## Session
+
+<!-- One row per study sitting. Status is open · paused · done.
+     `start` appends an open row · `stop` sets paused (or done, if the cycle finished)
+     · `resume` re-opens the last open-or-paused row and keeps its Day number.
+     At most one row may be open or paused at a time. -->
+
+| Day | Started | Updated | Status | Chapter | Step | Done this sitting | Next |
+|---|---|---|---|---|---|---|---|
+
 ## Delta queue
 
 | Added | Q-id | Question | Source | Drilled |

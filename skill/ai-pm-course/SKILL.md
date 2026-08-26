@@ -1,6 +1,6 @@
 ---
 name: ai-pm-course
-description: Run an AI PM interview-prep coaching course from a question bank of markdown files — chapter (notes + web-verified currency + Evidence Bank) → MCQ quiz in chat → drill block scored on a 10-point rubric → bookkeeping in a local tracker and coverage ledger. Ships with a 243-question bank and a 34-chapter curriculum; also does first-run setup from the learner's own bank, "course status", partial cycles ("just drill me on evals"), and delta checks when the bank changes. The learner is mid-course and speaks in shorthand — treat a bare "chapter N", "next chapter", "run a cycle", "quiz me on RAG", "drill me", "course status", "delta check", "bank updated", or any mention of their question bank, tracker, or coverage ledger as this course, even if the message never says AI, PM, or interview. Use for ANY request to start, continue, run, check on, or set up AI / ML / LLM product-manager interview prep. Not for general AI explanations, work projects, resumes, or cover letters. The tracker is the memory — read it first.
+description: Run an AI PM interview-prep coaching course from a question bank of markdown files — chapter (notes + web-verified currency + Evidence Bank) → MCQ quiz in chat → drill block scored on a 10-point rubric → bookkeeping in a local tracker and coverage ledger. Commands are start / resume / stop for a study sitting, plus "next chapter", "course status", "delta check" and first-run setup from the learner's own bank. Ships with a 243-question bank and a 34-chapter curriculum. The learner is mid-course and speaks in shorthand — treat a bare "chapter N", "next chapter", "run a cycle", "quiz me on RAG", "drill me", "course status", "delta check", "bank updated", or any mention of their question bank, tracker, or coverage ledger as this course, even if the message never says AI, PM, or interview. Use for ANY request to start, continue, run, check on, or set up AI / ML / LLM product-manager interview prep. Not for general AI explanations, work projects, resumes, or cover letters. The tracker is the memory — read it first.
 ---
 
 # AI PM Course — cycle runner
@@ -36,13 +36,18 @@ A **config with `<placeholder>` fields still in it** is a fresh clone, not a bro
 
 | The learner says | Do |
 |---|---|
+| `start`, `start day N` | Open a study sitting and show the plan for it, then begin — `references/sessions.md` |
+| `resume` | Re-open the last unfinished sitting and continue from its bookmark — `references/sessions.md` |
+| `stop` | Close the sitting, leaving a bookmark `resume` can act on — `references/sessions.md` |
 | "next chapter", "run a cycle", "chapter N" | Full cycle: Steps 1 → 4 |
 | "build chapter N", "chapter only" | Step 1 + its bookkeeping |
 | "quiz me on X" | Step 2 (build or locate the chapter first if it doesn't exist) |
 | "drill me", "drill block" | Step 3 + its bookkeeping, then Step 4 |
 | "course status" | Status report (below); read-only |
 | "delta check", "bank updated", or the cadence config sets | Delta check (below) |
-| "set up", "start the course", or no config found | `references/setup.md` |
+| "set up the course", "start from scratch", or no config found | `references/setup.md` |
+
+`start` / `resume` / `stop` wrap the sitting; the cycle steps below are what happens inside it. A learner who just says "next chapter" without `start` gets a cycle and no session row — that is fine, sessions are opt-in.
 
 ## Step 1 — Build the chapter
 
@@ -89,9 +94,11 @@ Then **verify by re-reading**: `python3 <skill>/scripts/course_tools.py verify -
 
 Cycle log line format: `<date> · Ch N · quiz x/y · drilled n · mean s/10 · C/E/F/D/S a/b/c/d/e · gap: <dimension — Q-id>`.
 
+If a Session row is `open` or `paused`, closing the cycle also closes it: Status → `done`, Updated refreshed, Next → `start Ch N+1`. A row left live after a finished cycle blocks the next `start` (`references/sessions.md`).
+
 ## Course status
 
-Read-only. One table, under twelve lines: chapters by status, ledger counts by glyph, the last three cycle-log lines with their dimension scores and the trend, Delta-queue size, next chapter. `python3 <skill>/scripts/course_tools.py status --tracker <path> --ledger <path>` gives you the counts.
+Read-only. One table, under twelve lines: chapters by status, ledger counts by glyph, the last three cycle-log lines with their dimension scores and the trend, Delta-queue size, next chapter. If a Session row is `open`, add one line naming the sitting and its Next, so a learner who lost their place can find it without starting anything. `python3 <skill>/scripts/course_tools.py status --tracker <path> --ledger <path>` gives you the counts.
 
 ## Delta check
 
@@ -123,5 +130,6 @@ Then add a row to the tracker's **Delta checks** table — date · +new · merge
 - `references/grading-rubric.md` — MCQ format and trap types; the 5-dimension drill rubric, gate rule, score bands, per-answer and scorecard formats.
 - `references/backends.md` — the data model, status glyphs, and file mechanics.
 - `references/setup.md` — first-run flow, for the shipped starter pack or the learner's own bank.
+- `references/sessions.md` — `start` / `resume` / `stop`: the Session bookmark and how to write it.
 - `assets/templates/` — blank tracker, ledger, bank and config.
-- `scripts/course_tools.py` — `status`, `delta`, `verify`, `next` (stdlib only; run with `python3` and the skill-relative path).
+- `scripts/course_tools.py` — `status`, `next`, `sitting`, `verify`, `delta` (stdlib only; run with `python3` and the skill-relative path). `sitting` prints the live session bookmark, which is what `resume` needs.

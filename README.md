@@ -59,7 +59,20 @@ next chapter
 
 That's it. Chapter 1 gets built, you get quizzed, you get drilled, the books get kept.
 
-Later on, useful things to say: `course status` · `drill me on chapter 12` · `quiz me on RAG` · `build chapter 9, skip the drills` · `delta check` (after you've added questions to the bank).
+### Commands
+
+| | |
+|---|---|
+| `start` · `start day 12` | Open a study sitting — shows the plan, then begins |
+| `resume` | Pick up the last unfinished sitting exactly where it stopped |
+| `stop` | Close the sitting with a bookmark; safe mid-question |
+| `next chapter` · `chapter 12` | A full cycle |
+| `build chapter 9, skip the drills` | Chapter only |
+| `quiz me on RAG` · `drill me` | One step on its own |
+| `course status` | Where you are, with the trend in your dimension scores |
+| `delta check` | Re-index the bank after you've added questions |
+
+`start` / `stop` are optional — say `next chapter` and work straight through if you prefer. They exist because a 45-minute cycle rarely survives a working day: `stop` mid-drill-block leaves a bookmark, and `resume` picks up without re-asking anything you've already answered.
 
 ---
 
@@ -79,22 +92,23 @@ The shipped bank is a starting point, not a cage. Two ways to make it yours:
 course/                   your course — these files are the memory
   bank.md                 243 questions, grouped by theme, sources credited
   ledger.md               one row per question: home chapter, status, date drilled, score
-  tracker.md              curriculum, delta queue, drill ledger, cycle log
+  tracker.md              curriculum, session bookmark, delta queue, drill ledger, cycle log
   chapters/               chapters land here as they're built
   ai-pm-course.config.md  your settings — the only file with anything personal in it
 skill/ai-pm-course/       the coach
   SKILL.md                the loop
-  references/             chapter template, grading rubric, data model, first-run setup
+  README.md               how to use it — commands, config, troubleshooting
+  references/             sessions, chapter template, grading rubric, data model, setup
   assets/templates/       blank tracker / ledger / bank / config
-  scripts/course_tools.py status · next · verify · delta (stdlib only)
+  scripts/course_tools.py status · next · sitting · verify · delta (stdlib only)
 tools/build_course.py     regenerates bank.md and ledger.md from one source list
 ```
 
 `bank.md` and `ledger.md` are generated so their question text stays byte-identical — that's what keeps delta checks from re-flagging questions that are already indexed. To change the question set properly, edit `tools/build_course.py` and re-run it:
 
 ```bash
-python tools/build_course.py          # regenerate
-python tools/build_course.py --check  # CI-friendly: fails if they've drifted
+python3 tools/build_course.py          # regenerate
+python3 tools/build_course.py --check  # CI-friendly: fails if they've drifted
 ```
 
 Editing `bank.md` by hand is fine too — that's the normal way to add questions. Just use `delta check` afterwards so the ledger catches up.

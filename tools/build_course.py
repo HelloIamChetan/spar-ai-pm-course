@@ -429,6 +429,12 @@ def build_tracker():
           "- Ask twice before deleting anything. Never restructure or delete from the bank without an OK.",
           "- Never guess a rot-prone fact; date-stamp what was verified.",
           "- Never re-ask a ✅ question.", "",
+          "## Session", "",
+          "*One row per study sitting. Status is `open` · `paused` · `done`. `start` appends an open row; "
+          "`stop` sets `paused`, or `done` if the cycle finished; `resume` re-opens the last open-or-paused "
+          "row and keeps its Day number. At most one row may be open or paused at a time.*", "",
+          "| Day | Started | Updated | Status | Chapter | Step | Done this sitting | Next |",
+          "|---|---|---|---|---|---|---|---|", "",
           "## Delta queue", "",
           "*New questions on already-covered topics, waiting to be drilled first in the next block.*", "",
           "| Added | Q-id | Question | Source | Drilled |", "|---|---|---|---|---|", "",

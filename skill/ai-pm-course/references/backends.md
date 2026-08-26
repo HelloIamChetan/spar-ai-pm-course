@@ -6,14 +6,14 @@ The course's memory is three markdown files plus a folder. `assets/templates/` s
 
 | File | Holds | Who writes it |
 |---|---|---|
-| **tracker.md** | Curriculum table (`#`, Chapter, Questions, Status) · Standing rules · Delta queue · Delta checks · Drill ledger · Cycle log | The skill, every cycle |
+| **tracker.md** | Curriculum table (`#`, Chapter, Questions, Status) · Standing rules · Session · Delta queue · Delta checks · Drill ledger · Cycle log | The skill, every cycle |
 | **ledger.md** | One row per bank question: `Q-id`, Question, Home chapter, Status, Drilled (date), Score | The skill, every cycle |
 | **bank.md** | The learner's questions, in their own structure | The learner. The skill only **appends** model answers (per config's convention) and **proposes** merges — it never restructures or deletes without an OK |
 | **chapters/** | `ch-NN-<slug>.md`, one per chapter | The skill, on build |
 
 ### Structure is fixed
 
-The tracker has exactly these sections: Curriculum · Standing rules · Delta queue · Delta checks · Drill ledger · Cycle log. Every session writes into those tables in their existing row format. Adding sections, legends or free-text notes to the tracker or ledger makes the next session — and `course_tools.py` — guess at the layout; if something has no home, it belongs in a Notes cell.
+The tracker has exactly these sections: Curriculum · Standing rules · Session · Delta queue · Delta checks · Drill ledger · Cycle log. Every session writes into those tables in their existing row format. Adding sections, legends or free-text notes to the tracker or ledger makes the next session — and `course_tools.py` — guess at the layout; if something has no home, it belongs in a Notes cell.
 
 **An existing tracker may predate this layout** — bullets where the templates use tables, "Log" instead of "Cycle log", no Questions column, extra sections the learner wrote themselves. Follow the learner's layout and conventions; never restructure a tracker someone is already using. The one addition worth making is a **Delta checks** table if none exists, and say so when you add it.
 
@@ -32,6 +32,10 @@ The curriculum's **Questions** column (where present) is the live count of ledge
 ### Tracker row status format
 
 `⬜` → `📖 26 Aug` → `✅ 26 Aug · quiz 7/8 · 4 drilled · 7.2/10`. Same string shape every time, so a status report can parse it and the learner can scan it.
+
+### Session row
+
+One row per study sitting — `references/sessions.md` owns the format and the rules. A cycle is a unit of course content; a session is a unit of the learner's time, and they do not line up one to one.
 
 ### Cycle log line
 

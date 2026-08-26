@@ -4,6 +4,7 @@ course_tools.py — helpers for the ai-pm-course local-markdown backend.
 
     python course_tools.py status  --tracker tracker.md --ledger ledger.md
     python course_tools.py next    --tracker tracker.md
+    python course_tools.py sitting --tracker tracker.md   # the live sitting, if any
     python course_tools.py verify  --tracker tracker.md --ledger ledger.md --chapter 4
     python course_tools.py delta   --bank bank.md --ledger ledger.md [--threshold 0.85]
 
@@ -185,6 +186,28 @@ def similarity(a, b):
 
 # ---------- commands ----------
 
+LIVE = ("open", "paused")
+
+
+def current_sitting(tracker_md):
+    """Last Session row that is still live (status open or paused), as a dict, or None.
+
+    'done' rows are history. The open/paused split is what lets `resume` tell "half a drill
+    block is waiting" from "you finished, start something new".
+    """
+    headers, rows = table_with(tracker_md, "day", "status")
+    if headers is None or not any(h.lower().startswith("day") for h in headers):
+        return None
+    idx = {k: col(headers, k) for k in ("day", "status", "chapter", "step", "next")}
+    idx["done"] = col(headers, "done")
+    idx["updated"] = col(headers, "updated")
+    for r in reversed(rows):
+        st = r[idx["status"]] if idx["status"] is not None and idx["status"] < len(r) else ""
+        if st.strip().lower().startswith(LIVE):
+            return {k: (r[i] if i is not None and i < len(r) else "") for k, i in idx.items()}
+    return None
+
+
 def cmd_status(a):
     tracker, ledger = read(a.tracker), read(a.ledger)
     cur, led = load_curriculum(tracker), load_ledger(ledger)
@@ -198,11 +221,19 @@ def cmd_status(a):
     print(f"Chapters: {len(cur)} total · ✅ {by['✅']} · 📖 {by['📖']} · ⬜ {by['⬜']}")
     print(f"Ledger:   {len(led)} questions · ✅ {lg['✅']} · 📖 {lg['📖']} · ⬜ {lg['⬜']} · 🆕 {lg['🆕']} · ⛔ {lg['⛔']}")
     print(f"Next:     Ch {nxt['n']} — {nxt['title']}" if nxt else "Next:     all chapters ✅")
-    sess_h, sess_r = table_with(tracker, "session", "status")
+    sess_h, sess_r = table_with(tracker, "session", "question")
     if sess_h is not None:
         si = col(sess_h, "status")
         done = sum(1 for r in sess_r if si is not None and si < len(r) and r[si].startswith("✅"))
-        print(f"Sessions: {len(sess_r)} optional · ✅ {done}")
+        print(f"Optional sessions: {len(sess_r)} · ✅ {done}")
+    sit = current_sitting(tracker)
+    if sit:
+        bits = [f"Day {sit.get('day', '?')}", sit.get("chapter", ""), sit.get("step", "")]
+        print(f"Sitting ({sit.get('status', '?')}): " + " · ".join(b for b in bits if b))
+        if sit.get("next"):
+            print(f"  next: {sit['next']}")
+    else:
+        print("Sitting: none live — say `start`")
     dq = sections(tracker).get("Delta queue", "")
     _, dq_rows = (tables(dq) or [(None, [])])[0]
     print(f"Delta queue: {len(dq_rows)}")
@@ -213,6 +244,18 @@ def cmd_status(a):
             print("  " + " · ".join(r))
     else:
         print("Last cycles: none logged")
+
+
+def cmd_sitting(a):
+    sit = current_sitting(read(a.tracker))
+    if not sit:
+        print("no live sitting (nothing open or paused)")
+        return
+    print(f"Day {sit.get('day','?')} · {sit.get('status','')} · {sit.get('chapter','')} · {sit.get('step','')}")
+    if sit.get("done"):
+        print(f"done: {sit['done']}")
+    if sit.get("next"):
+        print(f"next: {sit['next']}")
 
 
 def cmd_next(a):
@@ -290,6 +333,7 @@ def main():
     sub = p.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("status"); s.add_argument("--tracker", required=True); s.add_argument("--ledger", required=True); s.set_defaults(f=cmd_status)
     s = sub.add_parser("next"); s.add_argument("--tracker", required=True); s.set_defaults(f=cmd_next)
+    s = sub.add_parser("sitting", help="print the open study sitting, if any"); s.add_argument("--tracker", required=True); s.set_defaults(f=cmd_sitting)
     s = sub.add_parser("verify"); s.add_argument("--tracker", required=True); s.add_argument("--ledger", required=True); s.add_argument("--chapter", required=True, help="chapter number, 'Ch4', or a session code like S25"); s.set_defaults(f=cmd_verify)
     s = sub.add_parser("delta"); s.add_argument("--bank", required=True); s.add_argument("--ledger", required=True); s.add_argument("--threshold", type=float, default=0.85); s.set_defaults(f=cmd_delta)
     a = p.parse_args()
