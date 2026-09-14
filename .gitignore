@@ -1,5 +1,10 @@
-# Your own config may hold personal details — uncomment if you fork this publicly.
-# course/ai-pm-course.config.md
+# Your config holds your name, your target roles and your weak spots. It is ignored by
+# default so that forking this repo and filling it in cannot publish your job search.
+# The tracked template is course/config.example.md — copy it, don't rename it.
+course/ai-pm-course.config.md
+
+# Build output.
+dist/
 
 __pycache__/
 *.pyc

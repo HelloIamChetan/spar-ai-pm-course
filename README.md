@@ -1,4 +1,8 @@
-# AI PM Course
+# SPAR
+
+**Structured Practice for AI Roles**
+
+**[QUICKSTART.md](QUICKSTART.md)** — install and first cycle in one page.
 
 A self-paced AI product-manager interview course you run inside Claude. It ships with **243 real interview questions**, a **34-chapter curriculum**, and a coach that builds each chapter, quizzes you, drills you out loud, scores every answer against a rubric, and keeps the books so you can see whether you're actually getting better.
 
@@ -49,7 +53,7 @@ mkdir -p ~/.claude/skills
 cp -r skill/ai-pm-course ~/.claude/skills/
 ```
 
-**2. Fill in your config.** Open `course/ai-pm-course.config.md` and set your name, target roles and timing. Two minutes. Leave *Diagnosed misses* empty — the course proposes them from your own scores after two cycles.
+**2. Fill in your config.** Copy the template — `cp course/config.example.md course/ai-pm-course.config.md` — then open your copy and set your name, target roles and timing. The copy is gitignored, so your job search stays on your machine. Two minutes. Leave *Diagnosed misses* empty — the course proposes them from your own scores after two cycles.
 
 **3. Start.**
 
@@ -94,7 +98,8 @@ course/                   your course — these files are the memory
   ledger.md               one row per question: home chapter, status, date drilled, score
   tracker.md              curriculum, session bookmark, delta queue, drill ledger, cycle log
   chapters/               chapters land here as they're built
-  ai-pm-course.config.md  your settings — the only file with anything personal in it
+  config.example.md       the config template — copy it to ai-pm-course.config.md
+  ai-pm-course.config.md  your settings — the only file with anything personal (gitignored)
 skill/ai-pm-course/       the coach
   SKILL.md                the loop
   README.md               how to use it — commands, config, troubleshooting

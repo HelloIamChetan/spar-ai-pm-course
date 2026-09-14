@@ -25,7 +25,7 @@ If they only answer some of it, use defaults for the rest and say which defaults
 
 ## 2. Path A — shipped course
 
-Nothing to build. Copy `skill/assets/templates/config.md` to `course/ai-pm-course.config.md`, fill in what they told you, and point the paths at the `course/` folder. Read back: 243 questions, 34 chapters + 3 optional sessions, where the files are, the config in ten lines. Offer cycle 1.
+Nothing to build. Copy the template — `course/config.example.md` in the repo, or `skill/assets/templates/config.md` — to `course/ai-pm-course.config.md` (that name is gitignored, so their details stay local), fill in what they told you, and point the paths at the `course/` folder. Read back: 243 questions, 34 chapters + 3 optional sessions, where the files are, the config in ten lines. Offer cycle 1.
 
 If they want to trim the course (they only have three weeks, or they only care about evals and agents), don't delete chapters — reorder the curriculum table and say which chapters they're skipping for now. Deleted rows lose the coverage record; skipped rows are still there when they have time.
 

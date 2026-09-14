@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Nothing to install: the skill and its tools are stdlib-only by design, and
+      # tests/run_tests.py fails if that ever stops being true.
+      - name: Run tests
+        run: python3 tests/run_tests.py
+
+      - name: Build the .skill bundle
+        run: python3 tools/package_skill.py
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: skill-bundle
+          path: dist/*.skill

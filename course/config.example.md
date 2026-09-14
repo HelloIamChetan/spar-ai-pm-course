@@ -1,11 +1,16 @@
 # AI PM Course — Config
 
 <!--
-Your settings. The skill reads this at the start of every session and never edits it without asking.
-Fill in the < > bits and delete this comment. Everything else already points at the shipped course.
+TEMPLATE — copy this file before editing:
 
-Keep this file to yourself if you put anything sensitive in the embargo section — it is the only
-place personal details live. If you fork this repo publicly, consider adding it to .gitignore.
+    cp course/config.example.md course/ai-pm-course.config.md
+
+The copy is gitignored, so what you write about your job search stays on your machine. This
+file is the tracked template; editing it in place risks committing your details.
+
+Your settings. The skill reads the copy at the start of every session and never edits it
+without asking. Fill in the < > bits and delete this comment. Everything else already points
+at the shipped course.
 -->
 
 ## Learner
