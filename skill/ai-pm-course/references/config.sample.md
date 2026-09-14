@@ -1,4 +1,4 @@
-# AI PM Course — Config (sample)
+# SPAR — Config (sample)
 
 > This is a **filled-in example** for a fictional learner, so every field is shown with a realistic value. Your own config is private: copy `assets/templates/config.md`, fill it in, and keep it out of anything you share. The skill reads it at the start of every session and never edits it without asking.
 

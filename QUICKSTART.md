@@ -59,7 +59,7 @@ Open Claude in the repo folder and say:
 start
 ```
 
-One cycle is about 45 minutes: chapter → quiz → drills → bookkeeping. Then:
+One cycle is about 45 minutes: chapter → quiz → drills → bookkeeping. The commands in short:
 
 | Say | Get |
 |---|---|
@@ -71,6 +71,10 @@ One cycle is about 45 minutes: chapter → quiz → drills → bookkeeping. Then
 | `delta check` | re-index the ledger after you edit the bank |
 
 Commit `course/` as you go. The tracker becomes an honest record of what you learned.
+
+**Full command reference**, including the read-only scripts and every phrasing the skill
+recognises: [`skill/ai-pm-course/QUICKSTART.md`](skill/ai-pm-course/QUICKSTART.md). That copy
+ships inside the `.skill` bundle, so it travels with the skill wherever it's installed.
 
 ## Troubleshooting
 

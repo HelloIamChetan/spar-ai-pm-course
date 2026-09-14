@@ -1,10 +1,10 @@
 ---
 name: ai-pm-course
 license: MIT
-description: Run an AI PM interview-prep coaching course from a question bank of markdown files — chapter (notes + web-verified currency + Evidence Bank) → MCQ quiz in chat → drill block scored on a 10-point rubric → bookkeeping in a local tracker and coverage ledger. Commands: start / resume / stop a sitting, "next chapter", "course status", "delta check", and first-run setup. Ships a 243-question bank and 34-chapter curriculum. The learner is mid-course and speaks in shorthand — treat a bare "chapter N", "next chapter", "run a cycle", "quiz me on RAG", "drill me", "course status", "delta check", "bank updated", or any mention of their question bank, tracker, or coverage ledger as this course, even if the message never says AI, PM, or interview. Use for ANY request to start, continue, run, check on, or set up AI / ML / LLM product-manager interview prep. Not for general AI explanations, work projects, resumes, or cover letters. The tracker is the memory — read it first.
+description: Get genuinely good at AI product work, and drill it until it holds up under questioning. Runs a structured course from a bank of markdown files — chapter (notes + web-verified currency) → MCQ quiz → spoken drill block scored on a 10-point rubric → bookkeeping in a local tracker and coverage ledger. Commands are start / resume / stop for a sitting, plus "next chapter", "course status", "delta check" and first-run setup. Ships a 243-question bank and 34 chapters across LLM fundamentals, RAG, agents, evals, metrics, cost and AI strategy. The learner speaks in shorthand — treat a bare "chapter N", "run a cycle", "quiz me on RAG", "drill me", "course status", "delta check", or any mention of their question bank, tracker or coverage ledger as this course. Use for ANY request to start, continue, check on or set up structured AI / ML / LLM learning, or AI PM interview prep. Not for one-off AI explanations, work projects, resumes or cover letters. The tracker is the memory — read it first.
 ---
 
-# AI PM Course — cycle runner
+# SPAR — cycle runner
 
 A coaching loop for someone preparing for AI product-manager interviews. The course is built around a **question bank** — every question they might be asked — and exists so they can answer all of it well. One cycle ≈ 45 minutes: **chapter (10–15 min read) → MCQ quiz live in chat → drill block, answered aloud → bookkeeping**.
 

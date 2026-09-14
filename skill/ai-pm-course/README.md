@@ -1,4 +1,4 @@
-# SPAR — AI PM Course
+# SPAR
 
 **A coach for AI product-manager interview prep that keeps score.**
 

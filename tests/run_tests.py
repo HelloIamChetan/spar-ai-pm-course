@@ -185,6 +185,19 @@ def test_skill():
     t = (SKILL / "SKILL.md").read_text(encoding="utf-8")
     check("SKILL.md has frontmatter", t.startswith("---"))
     fm = t.split("---")[1]
+
+    # Frontmatter must be parseable YAML. An unquoted scalar containing ": " is read as a
+    # mapping and the whole skill fails to load — a one-character mistake that no amount of
+    # prose review catches, so it gets a test.
+    # PyYAML is not a dependency here (this suite is stdlib-only on purpose), so check the
+    # failure mode that actually bites rather than parsing the whole grammar: an unquoted
+    # scalar containing ": " is read as a nested mapping and the skill fails to load.
+    bad = [l for l in fm.strip().splitlines()
+           if re.match(r"^[a-z-]+:", l) and ": " in l.split(":", 1)[1]
+           and not l.split(":", 1)[1].strip().startswith(("'", '"', "|", ">"))]
+    check("frontmatter values are safe unquoted YAML (no bare ': ')", not bad,
+          f"{bad[0][:90] if bad else ''}")
+
     name = re.search(r"^name:\s*(.+)$", fm, re.M)
     check("frontmatter declares a name", bool(name))
     check("skill folder name matches the frontmatter name",

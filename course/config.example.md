@@ -1,4 +1,4 @@
-# AI PM Course — Config
+# SPAR — Config
 
 <!--
 TEMPLATE — copy this file before editing:

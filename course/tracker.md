@@ -1,4 +1,4 @@
-# AI PM Course — Tracker
+# SPAR — Tracker
 
 > Source of truth for where you are in the course. Personal settings live in `ai-pm-course.config.md`.
 

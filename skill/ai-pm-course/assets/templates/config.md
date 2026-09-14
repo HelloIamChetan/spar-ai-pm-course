@@ -1,4 +1,4 @@
-# AI PM Course — Config
+# SPAR — Config
 
 <!-- Private. Read by the ai-pm-course skill at the start of every session. Fill in what you know; leave a field blank rather than guessing. See references/config.sample.md for a filled example. -->
 

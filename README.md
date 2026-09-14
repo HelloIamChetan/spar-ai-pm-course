@@ -4,7 +4,7 @@
 
 **[QUICKSTART.md](QUICKSTART.md)** — install and first cycle in one page.
 
-A self-paced AI product-manager interview course you run inside Claude. It ships with **243 real interview questions**, a **34-chapter curriculum**, and a coach that builds each chapter, quizzes you, drills you out loud, scores every answer against a rubric, and keeps the books so you can see whether you're actually getting better.
+A self-paced course that makes you genuinely good at AI product work — and drills it until it holds up under questioning. You run it inside Claude. It ships with **243 real interview questions**, a **34-chapter curriculum**, and a coach that builds each chapter, quizzes you, drills you out loud, scores every answer against a rubric, and keeps the books so you can see whether you're actually getting better.
 
 Everything lives in markdown files in this repo. No database, no account, no subscription. Fork it, run cycles, commit as you go — your tracker becomes an honest record of what you learned and where you're still weak.
 
