@@ -2,13 +2,23 @@
 
 **Structured Practice for AI Roles**
 
-**[QUICKSTART.md](QUICKSTART.md)** — install and first cycle in one page.
+**[Try a sample drill](https://helloiamchetan.github.io/spar-ai-pm-course/)** · **[Install the full skill](QUICKSTART.md)**
 
-A self-paced course that makes you genuinely good at AI product work — and drills it until it holds up under questioning. You run it inside Claude. It ships with **243 real interview questions**, a **34-chapter curriculum**, and a coach that builds each chapter, quizzes you, drills you out loud, scores every answer against a rubric, and keeps the books so you can see whether you're actually getting better.
+## Problem
 
-Everything lives in markdown files in this repo. No database, no account, no subscription. Fork it, run cycles, commit as you go — your tracker becomes an honest record of what you learned and where you're still weak.
+AI product interview prep can turn into reading answers without finding out where your own reasoning breaks down.
 
----
+## Decision
+
+I designed a practice loop that teaches a topic, quizzes the learner, grades spoken answers against a fixed rubric, and records feedback to revisit. The 34-chapter curriculum and 243-question bank are built around that loop.
+
+## Proof
+
+The browser walkthrough shows an original scenario, an example answer, illustrative feedback, and the next practice recommendation. The full skill writes practice history to local Markdown files.
+
+## Next
+
+Test whether the same answer receives similar scores across fresh model sessions and how those scores compare with a human reference. See the [grading evaluation plan](docs/grading-eval.md).
 
 ## What one cycle looks like
 
@@ -21,7 +31,7 @@ About 45 minutes, four steps:
 | **3. Drills** | 3–5 bank questions, answered out loud. Each answer is scored 0–2 on five dimensions — Completeness, Evidence, Framing, Decision & cost, Structure — for a mark out of 10, with what earned and what lost the points quoted back at you. |
 | **4. Books** | Ledger statuses flip, the tracker row and cycle log are written, and the coach re-reads the files to prove it happened. |
 
-The scoring is the part that makes this different from asking a chatbot to quiz you. Same rubric every time means the numbers are comparable, so `course status` can tell you that your Evidence score has gone 0.5 → 0.8 → 1.4 over six cycles and your Decision score has not moved at all. That's the feedback loop.
+The scoring is the part that makes this different from asking a chatbot to quiz you. The same rubric gives learners a common reference for reviewing changes over time. For example, `course status` can show that your Evidence score has risen across six cycles while your Decision score has stayed flat.
 
 ### The rubric
 
@@ -42,8 +52,8 @@ Once you've done a couple of cycles, you list your one to three worst dimensions
 You need [Claude Code](https://claude.com/claude-code) or Claude with file access (Cowork with a connected folder, or claude.ai with attachments).
 
 ```bash
-git clone https://github.com/<you>/ai-pm-course.git
-cd ai-pm-course
+git clone https://github.com/HelloIamChetan/spar-ai-pm-course.git
+cd spar-ai-pm-course
 ```
 
 **1. Install the skill.** Copy it where Claude looks for skills:
@@ -161,7 +171,7 @@ If you're one of these authors and want your questions handled differently, open
 
 ## Honest limitations
 
-- **The coach is a model, not an interviewer.** It grades consistently against a written rubric, which is more than most practice partners manage, but it can't read your face or push you the way a good human will. Use it to build the reps, not to replace the real thing.
+- **The coach is a model, not an interviewer.** It grades against a written rubric. Scores can vary across model runs, and a human interviewer can ask follow-up questions and observe how you respond. Use it to build the reps, not to replace the real thing.
 - **Chapters are generated fresh each time.** Facts that rot get verified on the web at build time and date-stamped; everything else comes from the model. Check anything you plan to say as a number in a room.
 - **The bank is a snapshot.** It reflects what was being asked when it was compiled. Add to it as you hear real questions — that's what the delta check is for.
 - **Behavioural questions need you.** The optional sessions can structure your stories, but nobody can supply the stories.

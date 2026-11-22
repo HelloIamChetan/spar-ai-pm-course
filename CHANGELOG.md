@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Added a browser walkthrough with an original scenario, sample rubric feedback, and a progress entry. Reviewers can inspect a practice cycle before installing the skill.
+- Added an evaluation plan for scoring repeatability and agreement with a human rubric reference.
+
 ## 1.0.0 — 14 September 2026
 
 First public release, as **SPAR** — *Structured Practice for AI Roles*. The skill itself stays
